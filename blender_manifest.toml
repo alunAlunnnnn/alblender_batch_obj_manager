@@ -1,0 +1,11 @@
+schema_version = "1.0.0"
+id = "al_batch_obj_manager"
+version = "1.1.0"
+name = "AL Batch OBJ Manager"
+tagline = "Batch import/export for OBJ files using C++ pipelines."
+maintainer = "Lun.A"
+type = "add-on"
+website = "https://github.com/your-repo/al_batch_obj_manager"
+tags = ["Import-Export", "3D View"]
+blender_version_min = "4.1.0"
+license = ["SPDX-License-Identifier: GPL-2.0-or-later"]
