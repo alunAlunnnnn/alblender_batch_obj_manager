@@ -21,10 +21,10 @@ classes = (
 )
 
 def menu_func_import(self, context):
-    self.layout.operator(importer.IMPORT_SCENE_OT_batch_obj.bl_idname, text="Batch Wavefront OBJ (AL)")
+    self.layout.operator(importer.IMPORT_SCENE_OT_batch_obj.bl_idname, text="Batch Wavefront OBJ (folder)")
 
 def menu_func_export(self, context):
-    self.layout.operator(exporter.EXPORT_SCENE_OT_batch_obj.bl_idname, text="Batch Wavefront OBJ (AL)")
+    self.layout.operator(exporter.EXPORT_SCENE_OT_batch_obj.bl_idname, text="Batch Wavefront OBJ (folder)")
 
 def register():
     for cls in classes:
