@@ -6,6 +6,10 @@
 
 A Blender 4.x add-on designed for batch importing and exporting OBJ models. During the export process, each object is strictly exported as an individual, standalone file.
 
+![FeaturedImage_Small](./README.assets/FeaturedImage_Small.png)
+
+<video src="./README.assets/al_batch_obj_manager_usage_v1.mp4" controls=""></video>
+
 
 
 <br/>

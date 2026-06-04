@@ -2,6 +2,10 @@
 
 Blender 4.x 插件，用于批量导入和导出 obj 模型，导出时会按每个对象单独导出
 
+![FeaturedImage_Small](./README.assets/FeaturedImage_Small.png)
+
+<video src="./README.assets/al_batch_obj_manager_usage_v1.mp4" controls=""></video>
+
 
 
 <br/>
