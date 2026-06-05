@@ -2,7 +2,7 @@ bl_info = {
     "name": "AL Batch OBJ Manager",
     "description": "高效批量导入/导出 OBJ 文件，专为海量数据优化",
     "author": "Lun.A",
-    "version": (1, 1, 0),
+    "version": (1, 2, 0),
     "blender": (4, 2, 0),
     "location": "3D View > Sidebar > AL Tools | File > Import/Export",
     "category": "Import-Export",

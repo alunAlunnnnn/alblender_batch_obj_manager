@@ -3,7 +3,7 @@ import os
 import time
 from bpy.props import StringProperty, BoolProperty, EnumProperty, FloatProperty
 from bpy_extras.io_utils import ExportHelper
-from .utils import get_logger
+from .utils import get_logger, resolve_export_basename
 
 logger = get_logger()
 
@@ -21,6 +21,11 @@ class EXPORT_SCENE_OT_batch_obj(bpy.types.Operator, ExportHelper):
         name="Export Range",
         items=(('VISIBLE', "All Visible Meshes", ""), ('SELECTED', "Selected Meshes Only", "")),
         default='VISIBLE',
+    )
+    export_per_object_folder: BoolProperty(
+        name="Export Each Object to Subfolder",
+        description="为每个对象创建以对象名命名的子目录，OBJ/MTL 基名与目录名一致",
+        default=False,
     )
 
     global_scale: FloatProperty(name="Scale", default=1.000, min=0.0001)
@@ -56,6 +61,7 @@ class EXPORT_SCENE_OT_batch_obj(bpy.types.Operator, ExportHelper):
         box = layout.box()
         box.label(text="Batch Settings", icon='OUTLINER_OB_GROUP_INSTANCE')
         box.prop(self, "batch_mode")
+        box.prop(self, "export_per_object_folder")
 
         layout.separator()
         box = layout.box()
@@ -118,8 +124,17 @@ class EXPORT_SCENE_OT_batch_obj(bpy.types.Operator, ExportHelper):
             context.view_layer.objects.active = obj
             obj.select_set(True)
 
-            safe_name = bpy.path.clean_name(obj.name)
-            obj_filepath = os.path.join(output_dir, f"{safe_name}.obj")
+            cleaned = bpy.path.clean_name(obj.name)
+            basename = resolve_export_basename(cleaned, obj.name)
+            if basename != cleaned:
+                logger.info("Renamed export basename: %r -> %r", obj.name, basename)
+
+            if self.export_per_object_folder:
+                obj_dir = os.path.join(output_dir, basename)
+                os.makedirs(obj_dir, exist_ok=True)
+                obj_filepath = os.path.join(obj_dir, f"{basename}.obj")
+            else:
+                obj_filepath = os.path.join(output_dir, f"{basename}.obj")
 
             try:
                 if hasattr(bpy.ops.wm, "obj_export"):
