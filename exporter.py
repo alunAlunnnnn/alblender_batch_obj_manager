@@ -12,7 +12,7 @@ class EXPORT_SCENE_OT_batch_obj(bpy.types.Operator, ExportHelper):
     """批量单体导出为 OBJ 文件"""
     bl_idname = "export_scene.batch_obj"
     bl_label = "Batch Export OBJ"
-    bl_options = {'PRESET', 'REGISTER', 'UNDO'}
+    bl_options = {'PRESET', 'REGISTER'}
 
     filename_ext = ""
     use_filter_folder = True

@@ -11,7 +11,7 @@ class IMPORT_SCENE_OT_batch_obj(bpy.types.Operator, ImportHelper):
     """批量高效导入 OBJ 文件"""
     bl_idname = "import_scene.batch_obj"
     bl_label = "Batch Import OBJ"
-    bl_options = {'REGISTER', 'UNDO'}
+    bl_options = {'REGISTER'}
 
     filter_glob: StringProperty(default="*.obj", options={'HIDDEN'})
     directory: StringProperty(subtype='DIR_PATH')
